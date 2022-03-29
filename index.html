@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Wordle</title>
+    </head>
+    <body>
+  
+        <div id="app">
+            <input type="text" v-model="searchWord">
+            <button @click="getWords">Search</button>
+
+            <div v-if="Object.keys(result).length">
+
+                <div v-for="word in result" :key="result.indexOf(word)">
+                    <p>The definition of the word {{ word.word }}:</p>
+                    <div v-for="item in word.meanings" :key="word.meanings.indexOf(item)">
+                        <div v-for="def in item.definitions" :key="item.definitions.indexOf(def)">
+                            <p>{{ def.definition }}</p>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+               
+            </div>
+         
+        </div>
+        
+        <script src="https://unpkg.com/vue@2"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script src="site.js"></script>
+    </body>
+</html>
