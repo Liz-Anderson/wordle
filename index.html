@@ -9,8 +9,15 @@
     <body>
   
         <div id="app">
-            <input type="text" v-model="searchWord">
+            <input type="text" v-model="searchWord" @keyup.enter="getWords">
             <button @click="getWords">Search</button>
+            <div v-for="word in random" :key="random.indexOf(word)">
+                <p>{{ word }}</p>
+            </div>
+            <p>random: {{ random[0] }}</p>
+            <div v-if="random.length">
+
+            </div>
 
             <div v-if="Object.keys(result).length">
 

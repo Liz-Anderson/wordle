@@ -10,6 +10,7 @@ const vm = new Vue({
     data: {
         searchWord: '',
         result: [],
+        random: [],
         message: "hey, sup?"
     },
     methods: {
@@ -21,6 +22,17 @@ const vm = new Vue({
                 this.result = response.data
             })
             this.searchWord = ''
+        },
+        getRandom: function(){
+            axios({
+                method: 'get',
+                url: `https://random-word-api.herokuapp.com/word?length=5`,
+            }).then(response => {
+                this.random = response.data
+            })
         }
+    },
+    created: function(){
+        this.getRandom()
     }
 })
